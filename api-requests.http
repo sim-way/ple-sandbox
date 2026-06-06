@@ -1,0 +1,13 @@
+# REST Client Requests for Manual UAT
+# Supported in: IntelliJ IDEA, VS Code (REST Client), Cursor, and others
+# 
+# To use: Click the "Send Request" link above each request, or use:
+#   IntelliJ: Ctrl+Alt+E (or Cmd+Alt+E on Mac)
+#   VS Code:  Ctrl+Alt+R
+
+### Get All Subscription
+GET http://localhost:8080/api/subscription
+
+### Get Subscription by ID
+GET http://localhost:8080/api/subscription/{subscriptionrootId}
+

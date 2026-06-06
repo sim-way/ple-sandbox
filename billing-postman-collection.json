@@ -1,0 +1,47 @@
+{
+  "info": {
+    "name": "Billing API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+  {
+    "name": "Get All Subscription",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/subscription",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "subscription"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get Subscription by ID",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/subscription/{{subscriptionrootId}}",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "subscription",
+          "{{subscriptionrootId}}"
+        ]
+      }
+    }
+  }
+]
+}
