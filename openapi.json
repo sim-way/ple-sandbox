@@ -1,0 +1,1601 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "PublicLibrary API",
+    "version": "1.0.0",
+    "description": "API for PublicLibrary domain"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api",
+      "description": "Development server"
+    }
+  ],
+  "paths": {
+    "/book/registerbook": {
+      "post": {
+        "summary": "Execute RegisterBook command",
+        "operationId": "RegisterBook",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterBookRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterBookResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/book/{bookId}/markbookasrestricted": {
+      "post": {
+        "summary": "Execute MarkBookAsRestricted command",
+        "operationId": "MarkBookAsRestricted",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarkBookAsRestrictedRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarkBookAsRestrictedResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/book": {
+      "get": {
+        "summary": "List all Books",
+        "operationId": "listBooks",
+        "responses": {
+          "200": {
+            "description": "A list of Book instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Book"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/book/{bookId}": {
+      "get": {
+        "summary": "Get Book by ID",
+        "operationId": "getBookById",
+        "parameters": [
+          {
+            "name": "bookId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Book found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Book"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Book not found"
+          }
+        }
+      }
+    },
+    "/patron/registerpatron": {
+      "post": {
+        "summary": "Execute RegisterPatron command",
+        "operationId": "RegisterPatron",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterPatronRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RegisterPatronResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/patron/{patronId}/suspendpatron": {
+      "post": {
+        "summary": "Execute SuspendPatron command",
+        "operationId": "SuspendPatron",
+        "parameters": [
+          {
+            "name": "patronId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SuspendPatronRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuspendPatronResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/patron/{patronId}/restorepatron": {
+      "post": {
+        "summary": "Execute RestorePatron command",
+        "operationId": "RestorePatron",
+        "parameters": [
+          {
+            "name": "patronId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RestorePatronRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RestorePatronResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/patron": {
+      "get": {
+        "summary": "List all Patrons",
+        "operationId": "listPatrons",
+        "responses": {
+          "200": {
+            "description": "A list of Patron instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Patron"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/patron/{patronId}": {
+      "get": {
+        "summary": "Get Patron by ID",
+        "operationId": "getPatronById",
+        "parameters": [
+          {
+            "name": "patronId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Patron found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Patron"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Patron not found"
+          }
+        }
+      }
+    },
+    "/loan/checkoutbook": {
+      "post": {
+        "summary": "Execute CheckOutBook command",
+        "operationId": "CheckOutBook",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CheckOutBookRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CheckOutBookResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/loan/{loanId}/markloanoverdue": {
+      "post": {
+        "summary": "Execute MarkLoanOverdue command",
+        "operationId": "MarkLoanOverdue",
+        "parameters": [
+          {
+            "name": "loanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarkLoanOverdueRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarkLoanOverdueResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/loan/{loanId}/returnbook": {
+      "post": {
+        "summary": "Execute ReturnBook command",
+        "operationId": "ReturnBook",
+        "parameters": [
+          {
+            "name": "loanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReturnBookRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReturnBookResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/loan/{loanId}/returnoverduebook": {
+      "post": {
+        "summary": "Execute ReturnOverdueBook command",
+        "operationId": "ReturnOverdueBook",
+        "parameters": [
+          {
+            "name": "loanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReturnOverdueBookRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ReturnOverdueBookResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/loan": {
+      "get": {
+        "summary": "List all Loans",
+        "operationId": "listLoans",
+        "responses": {
+          "200": {
+            "description": "A list of Loan instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Loan"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/loan/{loanId}": {
+      "get": {
+        "summary": "Get Loan by ID",
+        "operationId": "getLoanById",
+        "parameters": [
+          {
+            "name": "loanId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Loan found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Loan"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Loan not found"
+          }
+        }
+      }
+    },
+    "/hold/placehold": {
+      "post": {
+        "summary": "Execute PlaceHold command",
+        "operationId": "PlaceHold",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PlaceHoldRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PlaceHoldResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/hold/{holdId}/activatehold": {
+      "post": {
+        "summary": "Execute ActivateHold command",
+        "operationId": "ActivateHold",
+        "parameters": [
+          {
+            "name": "holdId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActivateHoldRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ActivateHoldResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/hold/{holdId}/expirehold": {
+      "post": {
+        "summary": "Execute ExpireHold command",
+        "operationId": "ExpireHold",
+        "parameters": [
+          {
+            "name": "holdId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpireHoldRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpireHoldResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/hold/{holdId}/fulfillhold": {
+      "post": {
+        "summary": "Execute FulfillHold command",
+        "operationId": "FulfillHold",
+        "parameters": [
+          {
+            "name": "holdId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FulfillHoldRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FulfillHoldResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/hold": {
+      "get": {
+        "summary": "List all Holds",
+        "operationId": "listHolds",
+        "responses": {
+          "200": {
+            "description": "A list of Hold instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Hold"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/hold/{holdId}": {
+      "get": {
+        "summary": "Get Hold by ID",
+        "operationId": "getHoldById",
+        "parameters": [
+          {
+            "name": "holdId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Hold found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Hold"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Hold not found"
+          }
+        }
+      }
+    },
+    "/fee/accruelatefee": {
+      "post": {
+        "summary": "Execute AccrueLateFee command",
+        "operationId": "AccrueLateFee",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AccrueLateFeeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccrueLateFeeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/fee/{feeId}/makepartialpayment": {
+      "post": {
+        "summary": "Execute MakePartialPayment command",
+        "operationId": "MakePartialPayment",
+        "parameters": [
+          {
+            "name": "feeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MakePartialPaymentRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MakePartialPaymentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/fee/{feeId}/payremainingbalance": {
+      "post": {
+        "summary": "Execute PayRemainingBalance command",
+        "operationId": "PayRemainingBalance",
+        "parameters": [
+          {
+            "name": "feeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PayRemainingBalanceRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Command executed successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PayRemainingBalanceResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/fee": {
+      "get": {
+        "summary": "List all Fees",
+        "operationId": "listFees",
+        "responses": {
+          "200": {
+            "description": "A list of Fee instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Fee"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/fee/{feeId}": {
+      "get": {
+        "summary": "Get Fee by ID",
+        "operationId": "getFeeById",
+        "parameters": [
+          {
+            "name": "feeId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Fee found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Fee"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Fee not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "bookId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "restricted": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "bookId",
+          "title",
+          "restricted"
+        ]
+      },
+      "Patron": {
+        "type": "object",
+        "properties": {
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "researcherStatus": {
+            "type": "boolean"
+          },
+          "unpaidFeeBalance": {
+            "type": "number",
+            "format": "decimal"
+          }
+        },
+        "required": [
+          "patronId",
+          "name",
+          "researcherStatus",
+          "unpaidFeeBalance"
+        ]
+      },
+      "Loan": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bookId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "checkoutDate": {
+            "type": "string"
+          },
+          "dueDate": {
+            "type": "string"
+          },
+          "returnDate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "loanId",
+          "bookId",
+          "patronId",
+          "checkoutDate",
+          "dueDate"
+        ]
+      },
+      "Hold": {
+        "type": "object",
+        "properties": {
+          "holdId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bookId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "placedDate": {
+            "type": "string"
+          },
+          "expirationDate": {
+            "type": "string"
+          },
+          "queuePosition": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "holdId",
+          "bookId",
+          "patronId",
+          "placedDate",
+          "expirationDate",
+          "queuePosition"
+        ]
+      },
+      "Fee": {
+        "type": "object",
+        "properties": {
+          "feeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "number",
+            "format": "decimal"
+          },
+          "accruedDate": {
+            "type": "string"
+          },
+          "paidAmount": {
+            "type": "number",
+            "format": "decimal"
+          }
+        },
+        "required": [
+          "feeId",
+          "patronId",
+          "loanId",
+          "amount",
+          "accruedDate",
+          "paidAmount"
+        ]
+      },
+      "RegisterBookRequest": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "restricted": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title",
+          "restricted"
+        ]
+      },
+      "RegisterBookResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "bookId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "MarkBookAsRestrictedRequest": {
+        "type": "object",
+        "properties": {
+          "bookId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "bookId",
+          "bookId"
+        ]
+      },
+      "MarkBookAsRestrictedResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "bookId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "RegisterPatronRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "researcherStatus": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "researcherStatus"
+        ]
+      },
+      "RegisterPatronResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "SuspendPatronRequest": {
+        "type": "object",
+        "properties": {
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "patronId",
+          "patronId"
+        ]
+      },
+      "SuspendPatronResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "RestorePatronRequest": {
+        "type": "object",
+        "properties": {
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "patronId",
+          "patronId"
+        ]
+      },
+      "RestorePatronResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "CheckOutBookRequest": {
+        "type": "object",
+        "properties": {
+          "bookId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "bookId",
+          "patronId"
+        ]
+      },
+      "CheckOutBookResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "MarkLoanOverdueRequest": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "loanId",
+          "loanId"
+        ]
+      },
+      "MarkLoanOverdueResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "ReturnBookRequest": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "loanId",
+          "loanId"
+        ]
+      },
+      "ReturnBookResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "ReturnOverdueBookRequest": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "loanId",
+          "loanId"
+        ]
+      },
+      "ReturnOverdueBookResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "PlaceHoldRequest": {
+        "type": "object",
+        "properties": {
+          "bookId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "patronId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "bookId",
+          "patronId"
+        ]
+      },
+      "PlaceHoldResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "holdId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "ActivateHoldRequest": {
+        "type": "object",
+        "properties": {
+          "holdId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "holdId",
+          "holdId"
+        ]
+      },
+      "ActivateHoldResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "holdId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "ExpireHoldRequest": {
+        "type": "object",
+        "properties": {
+          "holdId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "holdId",
+          "holdId"
+        ]
+      },
+      "ExpireHoldResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "holdId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "FulfillHoldRequest": {
+        "type": "object",
+        "properties": {
+          "holdId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "holdId",
+          "holdId"
+        ]
+      },
+      "FulfillHoldResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "holdId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "AccrueLateFeeRequest": {
+        "type": "object",
+        "properties": {
+          "loanId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "decimal"
+          }
+        },
+        "required": [
+          "loanId",
+          "amount"
+        ]
+      },
+      "AccrueLateFeeResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "feeId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "MakePartialPaymentRequest": {
+        "type": "object",
+        "properties": {
+          "feeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "decimal"
+          }
+        },
+        "required": [
+          "feeId",
+          "feeId",
+          "amount"
+        ]
+      },
+      "MakePartialPaymentResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "feeId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      },
+      "PayRemainingBalanceRequest": {
+        "type": "object",
+        "properties": {
+          "feeId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "amount": {
+            "type": "decimal"
+          }
+        },
+        "required": [
+          "feeId",
+          "feeId",
+          "amount"
+        ]
+      },
+      "PayRemainingBalanceResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string"
+          },
+          "feeId": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "success"
+        ]
+      }
+    }
+  }
+}

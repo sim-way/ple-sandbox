@@ -1,0 +1,172 @@
+# REST Client Requests for Manual UAT
+# Supported in: IntelliJ IDEA, VS Code (REST Client), Cursor, and others
+# 
+# To use: Click the "Send Request" link above each request, or use:
+#   IntelliJ: Ctrl+Alt+E (or Cmd+Alt+E on Mac)
+#   VS Code:  Ctrl+Alt+R
+
+### RegisterBook
+POST http://localhost:8080/api/book/registerbook
+Content-Type: application/json
+
+{
+  "title": "sample_title_2696",
+  "restricted": true
+}
+
+### MarkBookAsRestricted
+POST http://localhost:8080/api/book/{bookId}/markbookasrestricted
+Content-Type: application/json
+
+{
+  "bookId": "550e8400-e29b-41d4-a716-0044135b92c5"
+}
+
+### Get All Book
+GET http://localhost:8080/api/book
+
+### Get Book by ID
+GET http://localhost:8080/api/book/{bookId}
+
+### RegisterPatron
+POST http://localhost:8080/api/patron/registerpatron
+Content-Type: application/json
+
+{
+  "name": "sample_name_6613",
+  "researcherStatus": true
+}
+
+### SuspendPatron
+POST http://localhost:8080/api/patron/{patronId}/suspendpatron
+Content-Type: application/json
+
+{
+  "patronId": "550e8400-e29b-41d4-a716-002ca6dde409"
+}
+
+### RestorePatron
+POST http://localhost:8080/api/patron/{patronId}/restorepatron
+Content-Type: application/json
+
+{
+  "patronId": "550e8400-e29b-41d4-a716-00dac5d493ec"
+}
+
+### Get All Patron
+GET http://localhost:8080/api/patron
+
+### Get Patron by ID
+GET http://localhost:8080/api/patron/{patronId}
+
+### CheckOutBook
+POST http://localhost:8080/api/loan/checkoutbook
+Content-Type: application/json
+
+{
+  "bookId": "550e8400-e29b-41d4-a716-0093c96a2426",
+  "patronId": "550e8400-e29b-41d4-a716-00d6b6f07d43"
+}
+
+### MarkLoanOverdue
+POST http://localhost:8080/api/loan/{loanId}/markloanoverdue
+Content-Type: application/json
+
+{
+  "loanId": "550e8400-e29b-41d4-a716-007954f303a8"
+}
+
+### ReturnBook
+POST http://localhost:8080/api/loan/{loanId}/returnbook
+Content-Type: application/json
+
+{
+  "loanId": "550e8400-e29b-41d4-a716-001a73b2e5cc"
+}
+
+### ReturnOverdueBook
+POST http://localhost:8080/api/loan/{loanId}/returnoverduebook
+Content-Type: application/json
+
+{
+  "loanId": "550e8400-e29b-41d4-a716-00d19d8e051e"
+}
+
+### Get All Loan
+GET http://localhost:8080/api/loan
+
+### Get Loan by ID
+GET http://localhost:8080/api/loan/{loanId}
+
+### PlaceHold
+POST http://localhost:8080/api/hold/placehold
+Content-Type: application/json
+
+{
+  "bookId": "550e8400-e29b-41d4-a716-00bf81e4b993",
+  "patronId": "550e8400-e29b-41d4-a716-0069123b2fda"
+}
+
+### ActivateHold
+POST http://localhost:8080/api/hold/{holdId}/activatehold
+Content-Type: application/json
+
+{
+  "holdId": "550e8400-e29b-41d4-a716-007e5dfb4246"
+}
+
+### ExpireHold
+POST http://localhost:8080/api/hold/{holdId}/expirehold
+Content-Type: application/json
+
+{
+  "holdId": "550e8400-e29b-41d4-a716-003ca6a45c58"
+}
+
+### FulfillHold
+POST http://localhost:8080/api/hold/{holdId}/fulfillhold
+Content-Type: application/json
+
+{
+  "holdId": "550e8400-e29b-41d4-a716-000efefda8fb"
+}
+
+### Get All Hold
+GET http://localhost:8080/api/hold
+
+### Get Hold by ID
+GET http://localhost:8080/api/hold/{holdId}
+
+### AccrueLateFee
+POST http://localhost:8080/api/fee/accruelatefee
+Content-Type: application/json
+
+{
+  "loanId": "550e8400-e29b-41d4-a716-003dfb7cfb63",
+  "amount": 251.71
+}
+
+### MakePartialPayment
+POST http://localhost:8080/api/fee/{feeId}/makepartialpayment
+Content-Type: application/json
+
+{
+  "feeId": "550e8400-e29b-41d4-a716-005611e427d9",
+  "amount": 487.37
+}
+
+### PayRemainingBalance
+POST http://localhost:8080/api/fee/{feeId}/payremainingbalance
+Content-Type: application/json
+
+{
+  "feeId": "550e8400-e29b-41d4-a716-00318deaa31b",
+  "amount": 783.72
+}
+
+### Get All Fee
+GET http://localhost:8080/api/fee
+
+### Get Fee by ID
+GET http://localhost:8080/api/fee/{feeId}
+

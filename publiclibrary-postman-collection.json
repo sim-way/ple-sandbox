@@ -1,0 +1,678 @@
+{
+  "info": {
+    "name": "PublicLibrary API Tests",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+  {
+    "name": "RegisterBook",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"title\": \"sample_title_4131\",\n  \"restricted\": false\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/book/registerbook",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "book",
+          "registerbook"
+        ]
+      }
+    }
+  },
+  {
+    "name": "MarkBookAsRestricted",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"bookId\": \"550e8400-e29b-41d4-a716-0051f533f0a7\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/book/{{bookId}}/markbookasrestricted",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "book",
+          "{{bookId}}",
+          "markbookasrestricted"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get All Book",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/book",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "book"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get Book by ID",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/book/{{bookId}}",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "book",
+          "{{bookId}}"
+        ]
+      }
+    }
+  },
+  {
+    "name": "RegisterPatron",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"name\": \"sample_name_2207\",\n  \"researcherStatus\": false\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/patron/registerpatron",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "patron",
+          "registerpatron"
+        ]
+      }
+    }
+  },
+  {
+    "name": "SuspendPatron",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"patronId\": \"550e8400-e29b-41d4-a716-002f933f14b8\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/patron/{{patronId}}/suspendpatron",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "patron",
+          "{{patronId}}",
+          "suspendpatron"
+        ]
+      }
+    }
+  },
+  {
+    "name": "RestorePatron",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"patronId\": \"550e8400-e29b-41d4-a716-00a7bd8215a3\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/patron/{{patronId}}/restorepatron",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "patron",
+          "{{patronId}}",
+          "restorepatron"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get All Patron",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/patron",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "patron"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get Patron by ID",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/patron/{{patronId}}",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "patron",
+          "{{patronId}}"
+        ]
+      }
+    }
+  },
+  {
+    "name": "CheckOutBook",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"bookId\": \"550e8400-e29b-41d4-a716-000346516d13\",\n  \"patronId\": \"550e8400-e29b-41d4-a716-00062fa1b2f9\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/loan/checkoutbook",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "loan",
+          "checkoutbook"
+        ]
+      }
+    }
+  },
+  {
+    "name": "MarkLoanOverdue",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"loanId\": \"550e8400-e29b-41d4-a716-004c96520407\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/loan/{{loanId}}/markloanoverdue",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "loan",
+          "{{loanId}}",
+          "markloanoverdue"
+        ]
+      }
+    }
+  },
+  {
+    "name": "ReturnBook",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"loanId\": \"550e8400-e29b-41d4-a716-009db5272a8f\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/loan/{{loanId}}/returnbook",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "loan",
+          "{{loanId}}",
+          "returnbook"
+        ]
+      }
+    }
+  },
+  {
+    "name": "ReturnOverdueBook",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"loanId\": \"550e8400-e29b-41d4-a716-0036cda09213\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/loan/{{loanId}}/returnoverduebook",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "loan",
+          "{{loanId}}",
+          "returnoverduebook"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get All Loan",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/loan",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "loan"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get Loan by ID",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/loan/{{loanId}}",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "loan",
+          "{{loanId}}"
+        ]
+      }
+    }
+  },
+  {
+    "name": "PlaceHold",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"bookId\": \"550e8400-e29b-41d4-a716-006bc72a757d\",\n  \"patronId\": \"550e8400-e29b-41d4-a716-009c61959802\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/hold/placehold",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "hold",
+          "placehold"
+        ]
+      }
+    }
+  },
+  {
+    "name": "ActivateHold",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"holdId\": \"550e8400-e29b-41d4-a716-00399bdb68b3\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/hold/{{holdId}}/activatehold",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "hold",
+          "{{holdId}}",
+          "activatehold"
+        ]
+      }
+    }
+  },
+  {
+    "name": "ExpireHold",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"holdId\": \"550e8400-e29b-41d4-a716-007d7eab20b1\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/hold/{{holdId}}/expirehold",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "hold",
+          "{{holdId}}",
+          "expirehold"
+        ]
+      }
+    }
+  },
+  {
+    "name": "FulfillHold",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"holdId\": \"550e8400-e29b-41d4-a716-00604ee17c17\"\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/hold/{{holdId}}/fulfillhold",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "hold",
+          "{{holdId}}",
+          "fulfillhold"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get All Hold",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/hold",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "hold"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get Hold by ID",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/hold/{{holdId}}",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "hold",
+          "{{holdId}}"
+        ]
+      }
+    }
+  },
+  {
+    "name": "AccrueLateFee",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"loanId\": \"550e8400-e29b-41d4-a716-006f9d96fd81\",\n  \"amount\": 973.89\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/fee/accruelatefee",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "fee",
+          "accruelatefee"
+        ]
+      }
+    }
+  },
+  {
+    "name": "MakePartialPayment",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"feeId\": \"550e8400-e29b-41d4-a716-004a804f9d77\",\n  \"amount\": 347.92\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/fee/{{feeId}}/makepartialpayment",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "fee",
+          "{{feeId}}",
+          "makepartialpayment"
+        ]
+      }
+    }
+  },
+  {
+    "name": "PayRemainingBalance",
+    "request": {
+      "method": "POST",
+      "header": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": "{\n  \"feeId\": \"550e8400-e29b-41d4-a716-002ae56e1efc\",\n  \"amount\": 807.34\n}"
+      },
+      "url": {
+        "raw": "http://localhost:8080/api/fee/{{feeId}}/payremainingbalance",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "fee",
+          "{{feeId}}",
+          "payremainingbalance"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get All Fee",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/fee",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "fee"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Get Fee by ID",
+    "request": {
+      "method": "GET",
+      "header": [],
+      "url": {
+        "raw": "http://localhost:8080/api/fee/{{feeId}}",
+        "protocol": "http",
+        "host": [
+          "localhost"
+        ],
+        "port": "8080",
+        "path": [
+          "api",
+          "fee",
+          "{{feeId}}"
+        ]
+      }
+    }
+  }
+]
+}
